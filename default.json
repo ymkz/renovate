@@ -9,8 +9,6 @@
     ":enableVulnerabilityAlertsWithLabel(vulnerabilities)"
   ],
   "automergeStrategy": "squash",
-  "prCreation": "not-pending",
-  "platformAutomerge": true,
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true

@@ -17,9 +17,23 @@
     {
       "matchManagers": ["npm"],
       "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "npm-major-dependencies",
+      "automerge": false
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "npm-non-major-dependencies",
       "automerge": true
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "npm-major-dependencies",
+      "automerge": false
     },
     {
       "matchManagers": ["npm"],

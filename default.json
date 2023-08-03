@@ -2,13 +2,14 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
-    "schedule:weekly",
     ":dependencyDashboard",
     ":timezone(Asia/Tokyo)",
     ":labels(dependencies, renovate)",
     ":enableVulnerabilityAlertsWithLabel(vulnerabilities)"
   ],
   "automergeStrategy": "squash",
+  "schedule": ["on saturday"],
+  "automergeSchedule": ["on sunday"],
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
@@ -32,7 +33,7 @@
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["major"],
-      "groupName": "npm-major-dependencies",
+      "groupName": "npm-major-dev-dependencies",
       "automerge": false
     },
     {

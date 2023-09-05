@@ -42,6 +42,11 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "npm-non-major-dev-dependencies",
       "automerge": true
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
     }
   ]
 }

@@ -8,36 +8,36 @@
     ":enableVulnerabilityAlertsWithLabel(vulnerabilities)"
   ],
   "automergeStrategy": "squash",
-  "schedule": ["on saturday"],
-  "automergeSchedule": ["on sunday"],
+  "schedule": ["on wednesday"],
+  "automergeSchedule": ["on friday"],
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
   },
   "packageRules": [
     {
-      "matchManagers": ["npm"],
+      "matchManagers": ["npm", "bun"],
       "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["major"],
       "groupName": "npm-major-dependencies",
       "automerge": false
     },
     {
-      "matchManagers": ["npm"],
+      "matchManagers": ["npm", "bun"],
       "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "npm-non-major-dependencies",
       "automerge": true
     },
     {
-      "matchManagers": ["npm"],
+      "matchManagers": ["npm", "bun"],
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["major"],
       "groupName": "npm-major-dev-dependencies",
       "automerge": false
     },
     {
-      "matchManagers": ["npm"],
+      "matchManagers": ["npm", "bun"],
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "npm-non-major-dev-dependencies",

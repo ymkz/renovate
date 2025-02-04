@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":dependencyDashboard",
     ":timezone(Asia/Tokyo)",
     ":labels(dependencies, renovate)",
     ":enableVulnerabilityAlertsWithLabel(vulnerabilities)"
@@ -15,6 +14,18 @@
     "automerge": true
   },
   "packageRules": [
+    {
+      "matchManagers": ["gradle"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "gradle-major-dependencies",
+      "automerge": false
+    },
+    {
+      "matchManagers": ["gradle"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "gradle-non-major-dependencies",
+      "automerge": true
+    },
     {
       "matchManagers": ["npm", "bun"],
       "matchDepTypes": ["dependencies"],

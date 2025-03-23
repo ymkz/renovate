@@ -7,57 +7,60 @@
     ":enableVulnerabilityAlertsWithLabel(vulnerabilities)"
   ],
   "automergeStrategy": "squash",
-  "schedule": ["on wednesday"],
-  "automergeSchedule": ["on friday"],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  },
-  "packageRules": [
-    {
-      "matchManagers": ["gradle"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "gradle-major-dependencies",
+  "minimumReleaseAge": "7 days",
+  "npm": {
+    "extends": [
+      ":prNotPending",
+      ":noUnscheduledUpdates",
+      ":separatePatchReleases",
+      "npm:unpublishSafe",
+      "helpers:disableTypesNodeMajor"
+    ],
+    "rangeStrategy": "bump",
+    "automergeType": "branch",
+    "major": {
       "automerge": false
     },
-    {
-      "matchManagers": ["gradle"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "gradle-non-major-dependencies",
-      "automerge": true
+    "minor": {
+      "automerge": true,
+      "groupName": "npm minor updates",
+      "prCreation": "status-success"
     },
-    {
-      "matchManagers": ["npm", "bun"],
-      "matchDepTypes": ["dependencies"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "npm-major-dependencies",
-      "automerge": false
-    },
-    {
-      "matchManagers": ["npm", "bun"],
-      "matchDepTypes": ["dependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "npm-non-major-dependencies",
-      "automerge": true
-    },
-    {
-      "matchManagers": ["npm", "bun"],
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "npm-major-dev-dependencies",
-      "automerge": false
-    },
-    {
-      "matchManagers": ["npm", "bun"],
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "npm-non-major-dev-dependencies",
-      "automerge": true
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
+    "patch": {
+      "automerge": true,
+      "groupName": "npm patch updates",
+      "prCreation": "status-success"
     }
-  ]
+  },
+  "gradle": {
+    "major": {
+      "automerge": false
+    },
+    "minor": {
+      "automerge": true,
+      "groupName": "gradle minor updates",
+      "prCreation": "status-success"
+    },
+    "patch": {
+      "automerge": true,
+      "groupName": "gradle patch updates",
+      "prCreation": "status-success"
+    }
+  },
+  "github-actions":{
+    "pinDigests": true,
+    "major": {
+      "automerge": false
+    },
+    "minor": {
+      "automerge": true,
+      "groupName": "github-actions minor updates",
+      "prCreation": "status-success"
+    },
+    "patch": {
+      "automerge": true,
+      "groupName": "github-actions patch updates",
+      "prCreation": "status-success"
+    }
+  }
 }

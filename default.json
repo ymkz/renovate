@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
+    ":prNotPending",
     ":timezone(Asia/Tokyo)",
     ":labels(dependencies, renovate)",
     ":enableVulnerabilityAlertsWithLabel(vulnerabilities)"
@@ -10,26 +11,19 @@
   "minimumReleaseAge": "7 days",
   "npm": {
     "extends": [
-      ":prNotPending",
-      ":noUnscheduledUpdates",
-      ":separatePatchReleases",
       "npm:unpublishSafe",
       "helpers:disableTypesNodeMajor"
     ],
-    "rangeStrategy": "bump",
-    "automergeType": "branch",
     "major": {
       "automerge": false
     },
     "minor": {
       "automerge": true,
-      "groupName": "npm minor updates",
-      "prCreation": "status-success"
+      "groupName": "npm minor updates"
     },
     "patch": {
       "automerge": true,
-      "groupName": "npm patch updates",
-      "prCreation": "status-success"
+      "groupName": "npm patch updates"
     }
   },
   "gradle": {
@@ -38,13 +32,11 @@
     },
     "minor": {
       "automerge": true,
-      "groupName": "gradle minor updates",
-      "prCreation": "status-success"
+      "groupName": "gradle minor updates"
     },
     "patch": {
       "automerge": true,
-      "groupName": "gradle patch updates",
-      "prCreation": "status-success"
+      "groupName": "gradle patch updates"
     }
   },
   "github-actions":{
@@ -54,13 +46,11 @@
     },
     "minor": {
       "automerge": true,
-      "groupName": "github-actions minor updates",
-      "prCreation": "status-success"
+      "groupName": "github-actions minor updates"
     },
     "patch": {
       "automerge": true,
-      "groupName": "github-actions patch updates",
-      "prCreation": "status-success"
+      "groupName": "github-actions patch updates"
     }
   }
 }

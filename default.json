@@ -19,11 +19,11 @@
     },
     "minor": {
       "automerge": true,
-      "groupName": "npm minor updates"
+      "groupName": "npm minor"
     },
     "patch": {
       "automerge": true,
-      "groupName": "npm patch updates"
+      "groupName": "npm patch"
     }
   },
   "gradle": {
@@ -32,11 +32,11 @@
     },
     "minor": {
       "automerge": true,
-      "groupName": "gradle minor updates"
+      "groupName": "gradle minor"
     },
     "patch": {
       "automerge": true,
-      "groupName": "gradle patch updates"
+      "groupName": "gradle patch"
     }
   },
   "github-actions":{
@@ -46,11 +46,11 @@
     },
     "minor": {
       "automerge": true,
-      "groupName": "github-actions minor updates"
+      "groupName": "github-actions minor"
     },
     "patch": {
       "automerge": true,
-      "groupName": "github-actions patch updates"
+      "groupName": "github-actions patch"
     }
   }
 }

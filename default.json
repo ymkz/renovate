@@ -2,55 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":prNotPending",
-    ":timezone(Asia/Tokyo)",
+    "helpers:disableTypesNodeMajor",
+    "helpers:pinGitHubActionDigests",
     ":labels(dependencies, renovate)",
     ":enableVulnerabilityAlertsWithLabel(vulnerabilities)"
   ],
+  "timezone": "Asia/Tokyo",
+  "schedule": ["after 2am and before 8am on monday"],
   "automergeStrategy": "squash",
-  "minimumReleaseAge": "7 days",
-  "npm": {
-    "extends": [
-      "npm:unpublishSafe",
-      "helpers:disableTypesNodeMajor"
-    ],
-    "major": {
-      "automerge": false
-    },
-    "minor": {
-      "automerge": true,
-      "groupName": "npm minor"
-    },
-    "patch": {
-      "automerge": true,
-      "groupName": "npm patch"
-    }
-  },
-  "gradle": {
-    "major": {
-      "automerge": false
-    },
-    "minor": {
-      "automerge": true,
-      "groupName": "gradle minor"
-    },
-    "patch": {
-      "automerge": true,
-      "groupName": "gradle patch"
-    }
-  },
-  "github-actions":{
-    "pinDigests": true,
-    "major": {
-      "automerge": false
-    },
-    "minor": {
-      "automerge": true,
-      "groupName": "github-actions minor"
-    },
-    "patch": {
-      "automerge": true,
-      "groupName": "github-actions patch"
-    }
-  }
+  "minimumReleaseAge": "3 days",
+  "packageRules": [
+    { "matchUpdateTypes": ["minor", "patch", "digest"], "automerge": true, "automergeType": "pr", "automergeStrategy": "squash" },
+    { "matchManagers": ["npm"], "groupName": "npm dependencies" },
+    { "matchManagers": ["gradle"], "groupName": "Gradle dependencies" },
+    { "matchManagers": ["github-actions"], "groupName": "GitHub Actions" }
+  ]
 }
